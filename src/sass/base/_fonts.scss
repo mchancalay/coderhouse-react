@@ -1,0 +1,28 @@
+//  tipos fuentes
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.cdnfonts.com/css/stretch-pro');
+
+$font-poppins: 'Poppins', sans-serif;
+$font-stretch: 'Stretch Pro', sans-serif;
+
+:root {
+  font-family: $font-poppins;
+}
+
+$general-font-sizes: (
+  "h1": 25px,
+  "h2": 22px,
+  "h3": 20px,
+  "h4": 19px,
+  "h5": 18px,
+  "h6": 17px,
+  "p": 16px,
+  "a": 16px,
+  "li": 16px
+);
+
+@each $tag, $size in $general-font-sizes {
+  #{$tag} {
+    font-size: $size;
+  }
+}

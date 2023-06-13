@@ -1,0 +1,8 @@
+//  base
+@use './sass/base/colors';
+@use './sass/base/fonts';
+@use './sass/base/resets';
+
+//  components
+@use './components/Navbar/navbar';
+@use './components/CartWidget/cartWidget';

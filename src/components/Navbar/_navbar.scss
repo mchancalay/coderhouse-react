@@ -1,0 +1,21 @@
+@use '../../sass/base/colors';
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    background-color: colors.$light;
+    padding: 1em;
+    justify-content: space-around;
+    align-items: center;
+
+    &__title {
+        cursor: pointer;
+    }
+
+    &__list {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        gap: 5em;
+    }
+}
