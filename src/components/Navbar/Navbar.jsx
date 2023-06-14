@@ -9,7 +9,7 @@ const Navbar = () => {
             <li>Hombre</li>
             <li>Mujer</li>
         </ul>
-        <CartWidget></CartWidget>
+        <CartWidget cantidad={1}></CartWidget>
     </nav>
   )
 }

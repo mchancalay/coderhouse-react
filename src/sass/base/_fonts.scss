@@ -18,7 +18,8 @@ $general-font-sizes: (
   "h6": 17px,
   "p": 16px,
   "a": 16px,
-  "li": 16px
+  "li": 16px,
+  "span": 16px
 );
 
 @each $tag, $size in $general-font-sizes {
