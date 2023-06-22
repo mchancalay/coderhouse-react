@@ -24,8 +24,8 @@ const CartWidget = ({cantidad}) => {
 
   return (
     <div className='carrito'>
-        <div className='carrito__circulo' style={{backgroundColor: color}}><span className='carrito__cantidad'>{regularCantidad(cantidad)}</span></div>
-        <img className='carrito__icon' src={imgUrl} alt="carrito icon" />
+      <div className='carrito__circulo' style={{backgroundColor: color}}><span className='carrito__cantidad'>{regularCantidad(cantidad)}</span></div>
+      <img className='carrito__icon' src={imgUrl} alt="carrito icon" />
     </div>
   )
 }

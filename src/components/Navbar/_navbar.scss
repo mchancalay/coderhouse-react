@@ -5,11 +5,10 @@
     flex-direction: row;
     background-color: colors.$light;
     padding: 1em;
-    justify-content: space-around;
-    align-items: center;
 
     &__title {
         cursor: pointer;
+        flex: 1;
     }
 
     &__list {
@@ -18,4 +17,5 @@
         flex-direction: row;
         gap: 5em;
     }
+
 }

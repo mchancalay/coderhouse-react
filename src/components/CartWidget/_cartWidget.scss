@@ -5,6 +5,11 @@
     height: 4em;
     position: relative;
     cursor: pointer;
+    flex: 1; // flex del componente padre
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 
     &__circulo {
         width: 2em;
@@ -24,6 +29,6 @@
     }
 
     &__icon {
-        width: 100%;
+        width: 4em;
     }
 }
