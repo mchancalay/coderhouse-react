@@ -2,9 +2,12 @@
 @use './sass/base/colors';
 @use './sass/base/fonts';
 @use './sass/base/resets';
+@use './sass/base/grilla';
 
 //  components
 @use './components/Navbar/navbar';
 @use './components/CartWidget/cartWidget';
 @use './components/Contador/contador';
 @use './components/ItemListContainer/itemListContainer';
+@use './components/Item/item';
+

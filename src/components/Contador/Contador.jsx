@@ -1,26 +1,15 @@
 import React, { useState } from 'react'
+import { useContador } from '../../hooks/useContador'
 
 const Contador = ({stock, inicial}) => {
 
-    const [contador, setContador] = useState(inicial);
-
-    const aumentar = () => {
-        if(contador < stock){
-            setContador(contador + 1);
-        }
-    }
-
-    const decrementar = () => {
-        if(contador > inicial){
-            setContador(contador - 1);
-        }
-    }
+    const {contador, incrementar, decrementar} = useContador(inicial, stock)
 
   return (
     <>
         <button onClick={decrementar}>-</button>
         <span>{contador}</span>
-        <button onClick={aumentar}>+</button>
+        <button onClick={incrementar}>+</button>
     </>
   )
 }
