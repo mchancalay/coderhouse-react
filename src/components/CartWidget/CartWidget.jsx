@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { CarritoContext } from '../../context/CarritoContext'
 
-const CartWidget = ({cantidad}) => {
+const CartWidget = () => {
 
   const [color, setColor] = useState("#d80e0e");
+  const { unidades } = useContext(CarritoContext);
 
   useEffect(() => {
-    if(cantidad > 0){
+    if(unidades > 0){
       setColor("#07bc0c");
     } else {
       setColor("#d80e0e");
     }
-  },[cantidad])
+  },[unidades])
 
-  const regularCantidad = (cantidad) => {
-    if(cantidad < 99){
-      return cantidad
+  const regularCantidad = (unidades) => {
+    if(unidades < 99){
+      return unidades
     } else {
       return "+99"
     }
@@ -24,7 +26,7 @@ const CartWidget = ({cantidad}) => {
 
   return (
     <div className='carrito'>
-      <div className='carrito__circulo' style={{backgroundColor: color}}><span className='carrito__cantidad'>{regularCantidad(cantidad)}</span></div>
+      <div className='carrito__circulo' style={{backgroundColor: color}}><span className='carrito__cantidad'>{regularCantidad(unidades)}</span></div>
       <img className='carrito__icon' src={imgUrl} alt="carrito icon" />
     </div>
   )

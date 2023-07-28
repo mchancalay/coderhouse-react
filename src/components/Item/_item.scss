@@ -5,13 +5,15 @@
     padding: 1em;
     cursor: pointer;
     transition: transform 0.3s ease;
+    width: 17em;
+
 
     display: flex;
     flex-direction: column;
     gap: .5em;
 
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.02);
     }
 
     &__img {
@@ -19,7 +21,7 @@
     }
 
     &__title {
-
+        font-size: 1em;
     }
 
     &__price {
