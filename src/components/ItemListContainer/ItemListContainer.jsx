@@ -18,23 +18,23 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     // Obtener la colección "productos"
-    const productos = collection(db, "productos");
+    const productos = query(collection(db, "productos"));
+    //const productos = query(collection(db, "productos"),where("precio", "<", 26000));
 
     // Obtener los documentos y mapearlos
     getDocs(productos)
       .then(response => {
         // Extraer los datos de cada documento usando la función map()
-        const productosData = response.docs.map(doc => doc.data());
+        const productosData = response.docs.map(doc => ({id:doc.id, ...doc.data()}));
 
         // Ahora la variable productosData contendrá un array con los datos de cada documento de la colección "productos"
-        // Haz lo que necesites con este array, por ejemplo, puedes guardarlo en el estado "productos" usando setProductos(productosData)
         setProductos(productosData);
       })
       .catch(error => {
         console.error("Error al obtener los productos:", error);
       });
  
-  },[])
+  },[productos])
 
   return (
     <div className='container'>

@@ -5,6 +5,7 @@ import ItemDetailCointainer from './components/ItemDetailCointainer/ItemDetailCo
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { CarritoProvider } from './context/CarritoContext'
 import Cart from './components/Cart/Cart'
+import Formulario from './components/Formulario/Formulario'
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
             <Route path='/cart' element={<Cart />} />
           </Routes> 
         </CarritoProvider>
+        <Formulario />
       </BrowserRouter>
 
       {/*<Mateflix />*/}
