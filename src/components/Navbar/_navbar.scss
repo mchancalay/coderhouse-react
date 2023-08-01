@@ -5,19 +5,30 @@
     flex-direction: row;
     background-color: colors.$light;
     padding: 1em;
+    height: 6em;
 
-    &__title {
-        cursor: pointer;
+    &__logo {
         flex: 1;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-
-    &__list {
-        cursor: pointer;
         display: flex;
+    }
+    
+    &__list {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+
         flex-direction: row;
         gap: 5em;
+    }
+
+    &__item {
+        cursor: pointer;
+    }
+
+    &__cart {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
     }
 
 }
