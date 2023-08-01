@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className='container'>
         <div>
           <Link to="/">
-            <h1 className='navbar__title'>Athenas Imp.</h1>
+            <h1 className='navbar__title'>mapple</h1>
           </Link>
         </div>
         <ul className='navbar__list'>
