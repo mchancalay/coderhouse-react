@@ -19,9 +19,9 @@ const App = () => {
             <Route path='/categoria/:id' element={<ItemListContainer />} />
             <Route path='/item/:id' element={<ItemDetailCointainer />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout' element={<Formulario />}/>
           </Routes> 
         </CarritoProvider>
-        <Formulario />
       </BrowserRouter>
 
       {/*<Mateflix />*/}
