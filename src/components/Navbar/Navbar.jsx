@@ -10,7 +10,7 @@ const Navbar = () => {
         <ul className='navbar__list'>
           <li><NavLink className={'navbar__item'} to="/categoria/1">AirPods</NavLink></li>
           <li><NavLink className={'navbar__item'} to="/categoria/2">Cargadores</NavLink></li>
-          <li><NavLink className={'navbar__item'} to="/categoria/1">Combos</NavLink></li>
+          <li><NavLink className={'navbar__item'} to="/categoria/3">Combos</NavLink></li>
         </ul>
         <div className='navbar__cart'>
           <NavLink to="/cart"><CartWidget></CartWidget></NavLink>
