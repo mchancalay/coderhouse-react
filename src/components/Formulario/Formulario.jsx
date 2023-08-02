@@ -5,22 +5,34 @@ import { db } from '../../services/config'
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
+  const [telefono, setTelefono] = useState("");
   const [correo, setCorreo] = useState("");
+  const [confirmarCorreo, setConfirmarCorreo] = useState("");
+  const [correoIncorrecto, setCorreoIncorrecto] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    // Accion al enviar
+    if(correo.toLocaleLowerCase() === confirmarCorreo.toLocaleLowerCase()){
+      setCorreoIncorrecto(false);
+
+      // Accion al enviar
       addDoc(collection(db, "usuarios"),{
         nombre,
         apellido,
         correoElectronico:correo
       })
-    // Fin accion al enviar
+      // Fin accion al enviar
 
-    setNombre("")
-    setApellido("")
-    setCorreo("")
+      setNombre("")
+      setApellido("")
+      setTelefono("")
+      setCorreo("")
+      setConfirmarCorreo("")
+    } else {
+      setCorreoIncorrecto(true);
+    }
+
   }
 
   return (
@@ -41,14 +53,35 @@ const Formulario = () => {
         onChange={e => setApellido(e.target.value)}
         value={apellido}
       />
-      <label htmlFor="correo">Correo electrónico</label>
+      <label htmlFor="telefono">Telefono</label>
+      <input 
+        id='telefono'
+        type="number" 
+        placeholder='Telefono' 
+        onChange={e => setTelefono(e.target.value)}
+        value={telefono}
+      />
+
+      <label htmlFor="correo">Correo</label>
       <input 
         id='correo'
         type="text" 
-        placeholder='Correo electrónico' 
+        placeholder='Correo' 
         onChange={e => setCorreo(e.target.value)}
         value={correo}
       />
+
+      <label htmlFor="confirmarCorreo">Confirmar correo</label>
+      <input 
+        id='confirmarCorreo'
+        type="text" 
+        placeholder='Confirmar correo' 
+        onChange={e => setConfirmarCorreo(e.target.value)}
+        value={confirmarCorreo}
+      />
+
+      {correoIncorrecto && <h3>Esta mal capo!</h3>}
+
       <button type='submit'>Comprar</button>
     </form>
   )
