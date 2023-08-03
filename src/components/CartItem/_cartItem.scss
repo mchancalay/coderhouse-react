@@ -1,0 +1,18 @@
+@use '../../sass/base/colors';
+
+.cartItem {
+    border: 1px solid colors.$light;
+    padding: 1em;
+    cursor: pointer;
+    width: 17em;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+
+    .cartItem__img {
+        width: 100%;
+        transition: transform 0.3s ease;
+    }
+
+
+}

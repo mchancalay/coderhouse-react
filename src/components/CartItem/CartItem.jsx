@@ -7,10 +7,11 @@ const CartItem = ({item, unidades}) => {
 
   return (
     <>
-      <h3>{item.nombre}</h3>
-      <h4>{item.cantidad}</h4>
-      <img style={{ width: '50px' }} src={item.imagen} />
-      <button onClick={() => deleteProducto(item.id)}>Eliminar</button>
+      <h3 className='cartItem__title'>{item.nombre.toUpperCase()}</h3>
+      <h4 className='cartItem__cantidad'>{item.cantidad}</h4>
+      <h4 className='cartItem__unidades'>{unidades}</h4>
+      <img className='cartItem__img' style={{ width: '50px' }} src={item.imagen} />
+      <button className='cartItem__nombre__btn--eliminar' onClick={() => deleteProducto(item.id)}>Eliminar</button>
     </>
     
 

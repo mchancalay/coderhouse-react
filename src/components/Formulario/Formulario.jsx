@@ -8,30 +8,38 @@ const Formulario = () => {
   const [telefono, setTelefono] = useState("");
   const [correo, setCorreo] = useState("");
   const [confirmarCorreo, setConfirmarCorreo] = useState("");
-  const [correoIncorrecto, setCorreoIncorrecto] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if(correo.toLocaleLowerCase() === confirmarCorreo.toLocaleLowerCase()){
-      setCorreoIncorrecto(false);
-
-      // Accion al enviar
-      addDoc(collection(db, "usuarios"),{
-        nombre,
-        apellido,
-        correoElectronico:correo
-      })
-      // Fin accion al enviar
-
-      setNombre("")
-      setApellido("")
-      setTelefono("")
-      setCorreo("")
-      setConfirmarCorreo("")
-    } else {
-      setCorreoIncorrecto(true);
+    if(!nombre || !apellido || !telefono || !correo || !confirmarCorreo){
+      setError("Todos los campos son obligatorios.")
+      return;
     }
+
+    if(correo.toLocaleLowerCase() !== confirmarCorreo.toLocaleLowerCase()){
+      setError("Los correos no coinciden.")
+      return;
+    }
+
+    setError(null)
+
+    // Accion al enviar
+
+    addDoc(collection(db, "usuarios"),{
+      nombre,
+      apellido,
+      correoElectronico:correo
+    })
+
+    // Fin accion al enviar
+
+    setNombre("")
+    setApellido("")
+    setTelefono("")
+    setCorreo("")
+    setConfirmarCorreo("")
 
   }
 
@@ -80,7 +88,7 @@ const Formulario = () => {
         value={confirmarCorreo}
       />
 
-      {correoIncorrecto && <h3>Esta mal capo!</h3>}
+      { error && <p>{error}</p> }
 
       <button type='submit'>Comprar</button>
     </form>

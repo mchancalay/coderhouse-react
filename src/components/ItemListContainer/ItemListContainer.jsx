@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
+import categorias from '../../js/categorias.js';
 
 // Importamos 'getDocs' para obtener los documentos de una coleccion (coleccion=array, documentos=objetos).
 // 'collections' creo una referencias a la coleccion creada, en este caso en firebase seria 'productos'.
@@ -12,10 +13,12 @@ import { db } from '../../services/config'
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
-
   const { id } = useParams();
 
+  const [categoria, setCategoria] = useState(null)
+
   useEffect(() => {
+
     // Obtener la colección "productos"
     const productos = id ? 
       query(collection(db, "productos"),where("idCat", "==", id)) : 
@@ -40,7 +43,7 @@ const ItemListContainer = () => {
 
   return (
     <div className='container'>
-        <h2 className='products__title'>Home</h2>
+        <h2 className='products__title'>{id ? categorias[id] : 'Home'}</h2>
         <ItemList productos={productos} />
     </div>
   )

@@ -7,6 +7,7 @@
 //  components
 @use './components/Navbar/navbar';
 @use './components/CartWidget/cartWidget';
+@use './components/CartItem/cartItem';
 @use './components/ItemCount/itemCount';
 @use './components/ItemListContainer/itemListContainer';
 @use './components/Item/item';
