@@ -1,8 +1,9 @@
 import { addDoc, collection } from 'firebase/firestore';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { db } from '../../services/config'
+import { CarritoContext } from '../../context/CarritoContext'
 
-const Formulario = () => {
+const Formulario = ({ setOrdenId }) => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [telefono, setTelefono] = useState("");
@@ -10,6 +11,8 @@ const Formulario = () => {
   const [confirmarCorreo, setConfirmarCorreo] = useState("");
   const [error, setError] = useState(null);
 
+  const {carrito, total, unidades, addProducto, deleteProducto, vaciarCarrito} = useContext(CarritoContext);
+  
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -27,11 +30,26 @@ const Formulario = () => {
 
     // Accion al enviar
 
-    addDoc(collection(db, "usuarios"),{
-      nombre,
-      apellido,
-      correoElectronico:correo
-    })
+
+    const orden = {
+        items: carrito.map(producto => ({
+            id: producto.item.id,
+            nombre: producto.item.nombre,
+            unidades: producto.unidades
+        })),
+        total: total,
+        fecha: new Date(),
+        nombre,
+        apellido,
+        telefono,
+        correo
+    }
+    
+    addDoc(collection(db, "ordenes"), orden)
+      .then(docRef => {
+        setOrdenId(docRef.id)
+        vaciarCarrito();
+      })
 
     // Fin accion al enviar
 
@@ -45,6 +63,17 @@ const Formulario = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+
+      {
+        carrito.map(producto => 
+          <div key={producto.item.id}>
+            <h2>{producto.item.nombre}</h2>
+            <h2>{producto.unidades}</h2>
+            <h2>{producto.item.precio * producto.unidades}</h2>
+          </div>
+        )
+      }
+
       <label htmlFor="nombre">Nombre</label>
       <input 
         id='nombre'
