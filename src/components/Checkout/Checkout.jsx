@@ -7,9 +7,7 @@ const Checkout = () => {
   
   return (
     <div>
-        <Formulario setOrdenId={setOrdenId}/>
-
-        {ordenId && <h2>Compra realizada con exito! ID:{ordenId}</h2>}
+        { ordenId ? <h2>Compra realizada con exito! ID:{ordenId}</h2> : <Formulario setOrdenId={setOrdenId}/> }
     </div>
   )
 }
